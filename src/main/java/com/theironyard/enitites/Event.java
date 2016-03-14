@@ -19,9 +19,13 @@ public class Event {
     @Column(nullable = false)
     LocalDateTime dateTime;
 
-    public Event(String description, LocalDateTime dateTime) {
+    @ManyToOne
+    User user;
+
+    public Event(String description, LocalDateTime dateTime, User user) {
         this.description = description;
         this.dateTime = dateTime;
+        this.user = user;
     }
 
     public Event() {  //blank constructor for hibernate when doing queries like findAll
