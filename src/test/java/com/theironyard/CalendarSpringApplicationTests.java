@@ -50,7 +50,6 @@ public class CalendarSpringApplicationTests {
 			mockMvc = MockMvcBuilders.webAppContextSetup(wap).build(); //use to send fake requests
 
 
-		}
 	}
 
 	//test login:
