@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Created by vajrayogini on 3/14/16.
@@ -35,7 +36,7 @@ public class CalendarSpringController {
     if (userName != null) {
         model.addAttribute("user", users.findFirstByName(userName));
         model.addAttribute("userExists", true);
-        model.addAttribute("now", LocalDateTime.now()); //to default to now time and date, add mustache to value in html
+        model.addAttribute("now", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)); //to default to now time and date, add mustache to value in html
     }
     model.addAttribute("events", events.findAllByOrderByDateTimeDesc());
     return "home";
