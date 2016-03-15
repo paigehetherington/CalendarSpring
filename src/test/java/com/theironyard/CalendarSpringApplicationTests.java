@@ -44,12 +44,11 @@ public class CalendarSpringApplicationTests {
 
 	@Before
 	public void before() {
-		if (firstRun) { //only delete stuff in database first time tests are run
 			favorites.deleteAll(); //delete table that relies on others first
 			events.deleteAll();
 			users.deleteAll();
 			mockMvc = MockMvcBuilders.webAppContextSetup(wap).build(); //use to send fake requests
-			firstRun = false;
+
 
 		}
 	}
@@ -67,7 +66,7 @@ public class CalendarSpringApplicationTests {
 
 	@Test
 	public void testAddEvent() throws Exception {
-
+		testLogin();
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/create-event")
 				.param("description", "Test event")
